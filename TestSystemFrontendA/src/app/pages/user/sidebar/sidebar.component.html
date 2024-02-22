@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-action-list class="p10">
+    <div mat-subheader>Categorias</div>
+    <mat-list-item *ngFor="let c of categories" [routerLink]="'/user/'+c.id" >
+      <button class="center">
+        <mat-icon class="mr20">account_circle</mat-icon>{{ c.title }}
+      </button>
+    </mat-list-item>
+    
+    <mat-list-item>
+      <button  class="center" routerLink="/user/0" >
+        <mat-icon class="mr20">quiz</mat-icon>Examenes
+      </button>
+    </mat-list-item>
+    
+    <mat-list-item>
+      <button (click)="logOut()" class="center">
+        <mat-icon class="mr20">logout</mat-icon>Salir
+      </button>
+    </mat-list-item>
+  </mat-action-list>
+</mat-card>

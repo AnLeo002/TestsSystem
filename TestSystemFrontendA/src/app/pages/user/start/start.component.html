@@ -1,0 +1,93 @@
+<!-- Si queremos tener una pantalla de carga debemos instalar la siguiente extencion npm i --save ngx-ui-loader -->
+<div class="bootstrap-wrapper" *ngIf="!sendQuestions">
+  <div class="conatainer-fluid">
+    <div class="row w100">
+      <div class="col-md-3">
+        <mat-card class="ml20 mt70">
+          <mat-card-header>
+            <mat-card-title>
+              Instrucciones
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ul>
+              <li>Noactualice la página</li>
+              <li>No cambies las pestañas</li>
+              <li>No minimices la ventana</li>
+            </ul>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-7">
+        <ng-container *ngIf="questions">
+          <h2 class="mt20"> En curso <b>{{questions[0].exam.title}}</b></h2>
+        </ng-container>
+        <mat-card *ngFor="let q of questions;let i = index">
+          <mat-card-content>
+            <h4><b>{{i+1}} ) </b> <span [innerHTML]="q.content"></span></h4>
+            <mat-divider></mat-divider>
+            <div class="row mt20">
+              <div class="col-md-9 mt10">
+                <input [(ngModel)]="q.answerUser" type="radio" name={{i}} [value]="q.option1">{{q.option1}}
+              </div>
+              <div class="col-md-9 mt10">
+                <input [(ngModel)]="q.answerUser" type="radio" name={{i}} [value]="q.option2">{{q.option2}}
+              </div>
+              <div class="col-md-9 mt10">
+                <input [(ngModel)]="q.answerUser" type="radio" name={{i}} [value]="q.option3">{{q.option3}}
+              </div>
+              <div class="col-md-9 mt10">
+                <input [(ngModel)]="q.answerUser" type="radio" name={{i}} [value]="q.option4">{{q.option4}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6"></div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <div class="container text-center mt20 mb20">
+          <button mat-raised-button color="primary" (click)="sendExam()">Enviar examen</button>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <mat-card class="mt70 text-center" *ngIf="questions">
+          <mat-card-header>
+            <mat-card-title>
+              temporizador
+            </mat-card-title>
+            <mat-card-subtitle>
+              El cuestionario se enviará automaticamente cuando el temporizador llegue a 0
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h3 class="text-center">{{changeHourFormat()}}</h3>
+            <mat-spinner mode="determinate" style="margin: auto;" [value]="(time/(this.questions.length * 2 * 60)* 100)"></mat-spinner>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bootstrap-wrapper" *ngIf="sendQuestions">
+  <div class="container t20">
+    <div class="col-md-6 offset-md-3">
+      <mat-card class="p20">
+        <mat-card-header class="flex-center">
+          <mat-card-title>
+            Resultado de la prueba
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center mt20">
+          <h3>Puntos conseguidos: {{pointsEarned}}</h3>
+          <h3>Respuestas correctas: {{answersCorrect}}</h3>
+        </mat-card-content>
+        <mat-card-actions class="flex-center mt20">
+          <button mat-raised-button color="primary" (click)="printPage()">Imprimir</button>
+          <button mat-raised-button color="accent" class="ml20" [routerLink]="'/user/0'">Inicio</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

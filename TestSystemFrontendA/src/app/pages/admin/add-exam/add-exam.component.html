@@ -1,0 +1,42 @@
+<mat-card class="p20">
+  <h2 class="text-center">Agregar nuevo examen</h2>
+  <div class="row">
+    <div class="col-md-8 offset-md-2" >
+      <form (ngSubmit)="saveExam()">
+        <mat-form-field class="w100" >
+          <mat-label>Título</mat-label>
+           <input [(ngModel)]="examData.title" type="text" name="title" placeholder="Ingrese el título" matInput required>
+        </mat-form-field>
+        <mat-form-field class="w100" >
+          <mat-label>Descripción</mat-label>
+           <textarea [(ngModel)]="examData.description" rows="8" name="description" placeholder="Ingrese la descripción" matInput required ></textarea>
+        </mat-form-field>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Puntos máximos</mat-label>
+               <input [(ngModel)]="examData.points" type="text" name="points" placeholder="Establesca la cantidad de puntos" matInput required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Número de preguntas</mat-label>
+               <input [(ngModel)]="examData.numberOfQuestions" type="text" name="numberOfQuestions" placeholder="Ingrese el numero de preguntas" matInput required>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-slide-toggle class="mt20" [(ngModel)]="examData.enable"color="primary" name="enable">Estado de publicación</mat-slide-toggle>
+        <mat-form-field appearance="fill" class="mt20 w100">
+          <mat-label>Categorias</mat-label>
+          <mat-select name="category" [(ngModel)]="examData.category.id">
+          <mat-option *ngFor="let c of categories" [value]="c.id" >{{c.title}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+
+        <div class="container text-center">
+          <button mat-raised-button color="primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

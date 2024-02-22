@@ -1,0 +1,88 @@
+:root{
+  color-scheme: light dark;
+}
+
+html, body { height: 100vh; }
+body { margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,0.7624299719887955) 18%, rgba(123,31,162,1) 85%);
+background-attachment: fixed;
+}
+
+.text-center{
+  text-align: center;
+}
+.full-width{
+  width: 100%;
+}
+.ml20{
+  margin-left: 20px !important;
+}
+.mr20{
+  margin-right: 20px !important;
+}
+.mt20{
+  margin-top: 20px !important;
+}
+.mb20{
+  margin-bottom: 20px !important;
+}
+.ml10{
+  margin-left: 10px !important;
+}
+.mr10{
+  margin-right: 10px !important;
+}
+.mt10{
+  margin-top: 10px !important;
+}
+.mb10{
+  margin-bottom: 10px !important;
+}
+.ml70{
+  margin-left: 70px !important;
+}
+.p20{
+  padding: 20px !important;
+}
+.p10{
+  padding: 10px !important;
+}
+.mr30{
+  margin-right: 30px !important;
+}
+.mr70{
+  margin-right: 70px !important;
+}
+.mt70{
+  margin-top: 70px !important;
+}
+.w100{
+  width: 100%;
+}
+.bw{
+  background: #ffffffeb !important;
+}
+.hr{
+  width: 100%;
+  margin-top: 12px;
+}
+.end{
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+.center{
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 18px;
+  cursor: pointer;
+}
+.flex-center{
+  display: flex !important;
+  justify-content: center !important;
+}
+
+
+
