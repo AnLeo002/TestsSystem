@@ -79,9 +79,9 @@
             Resultado de la prueba
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="text-center mt20">
-          <h3>Puntos conseguidos: {{pointsEarned}}</h3>
-          <h3>Respuestas correctas: {{answersCorrect}}</h3>
+        <mat-card-content class="text-center mt20" *ngIf="response">
+          <h3>Puntos conseguidos: {{response.pointsEarned}}</h3>
+          <h3>Respuestas correctas: {{response.answersCorrect}}</h3>
         </mat-card-content>
         <mat-card-actions class="flex-center mt20">
           <button mat-raised-button color="primary" (click)="printPage()">Imprimir</button>

@@ -3,6 +3,7 @@ package com.tests.system.service;
 import com.tests.system.entities.ERole;
 import com.tests.system.entities.RoleEntity;
 import com.tests.system.entities.UserEntity;
+import com.tests.system.repository.RoleRepo;
 import com.tests.system.repository.UserRepo;
 import com.tests.system.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class UserServiceImpl implements IUserService{
     @Autowired
     private UserRepo repo;
     @Autowired
+    private RoleRepo roleRepo;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -33,7 +36,7 @@ public class UserServiceImpl implements IUserService{
         }else {
             roleEntities = userDTO.roles().stream()
                     .map(role -> RoleEntity.builder()
-                            .role(ERole.valueOf(role))
+                            .role(ERole.valueOf(role.getRole().name()))
                             .build()
                     )
                     .collect(Collectors.toSet());
@@ -73,7 +76,7 @@ public class UserServiceImpl implements IUserService{
         user.setName(userDTO.name());
         user.setLastName(userDTO.lastName());
         user.setUsername(userDTO.username());
-        user.setPassword(userDTO.password());
+        user.setPassword(passwordEncoder.encode(userDTO.password()));
         user.setPhone(userDTO.phone());
         user.setProfile(userDTO.profile());
         user.setRoles(null);//THIS PROPERTY IS ERROR
@@ -83,12 +86,46 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public void deleteUser(String username) {
+    public void deleteUser(Long id) {
         try {
-            Optional<UserEntity> user = repo.findByUsername(username);
-            repo.deleteById(user.get().getId());
+            repo.deleteById(id);
         }catch (Exception e){
             throw new RuntimeException("El Usuario no pudo ser eliminado "+e);
         }
+    }
+
+    @Override
+    public UserEntity updateUserById(Long id, UserDTO userDTO, boolean retry) {
+
+        UserEntity user = repo.findById(id).get();
+
+        Set<RoleEntity> roleEntities = new HashSet<>();
+
+        userDTO.roles().forEach(role ->{
+            if(roleRepo.findById(role.getId()).isPresent()){
+                roleEntities.add(role);
+            }else{
+                roleEntities.add(RoleEntity.builder()
+                        .role(ERole.valueOf(role.getRole().name()))
+                        .build());
+                }
+            }
+        );
+        user.setEmail(userDTO.email());
+        user.setName(userDTO.name());
+        user.setLastName(userDTO.lastName());
+        user.setUsername(userDTO.username());
+        user.setPassword(retry ? passwordEncoder.encode(userDTO.password()) : userDTO.password());//If the user update information, the password will be encripted but if the admin change the variable enabled, the password will not be encripted
+        user.setPhone(userDTO.phone());
+        user.setProfile(userDTO.profile());
+        user.setRoles(roleEntities);
+        user.setEnabled(userDTO.enabled());
+
+        return repo.save(user);
+    }
+
+    @Override
+    public List<UserEntity> findAllUsers() {
+        return (List<UserEntity>) repo.findAll();
     }
 }

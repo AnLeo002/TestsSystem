@@ -27,7 +27,12 @@ export class SignupComponent implements OnInit {
 
   formSubmit(){
     console.log(this.user);
-    if(this.user.username =='' || this.user.username == null){
+    if(this.user.username =='' || this.user.username == null || 
+    this.user.name =='' || this.user.name == null ||
+    this.user.lastName =='' || this.user.lastName == null ||
+    this.user.phone =='' || this.user.phone == null ||
+    this.user.email =='' || this.user.email == null ||
+    this.user.password =='' || this.user.password == null){
       this.snack.open('El nombre de usuario es requerido','Aceptar',{
         duration:3000,
         horizontalPosition:"right",

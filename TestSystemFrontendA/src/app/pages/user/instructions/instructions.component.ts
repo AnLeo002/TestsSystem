@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExamService } from '../../../services/exam.service';
 import Swal from 'sweetalert2';
+import { QuestionService } from '../../../services/question.service';
 
 @Component({
   selector: 'app-instructions',

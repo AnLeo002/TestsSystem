@@ -1,10 +1,29 @@
 <div class="bootstrap-wrapper">
   <div class="container">
     <div class="row mt20">
-      <div class="col-md-6 offset-md-3 text-center">
-        <h1>Bienvenido al portal de exámenes</h1>
-        <button mat-raised-button color="primary">Inicio</button>
-      </div>
+      <mat-card class="w100 p20 text-center">
+        <mat-card-title class="mt20">
+          <h1>Bienvenido al portal de exámenes</h1>
+        </mat-card-title>
+        <mat-card-subtitle >
+          <h2 class="fs20">El lugar mas practico para crear tus cuestionarios</h2>
+        </mat-card-subtitle>
+      </mat-card>
+      <mat-card class="w100 p20">
+        <mat-card-content class="flex-center mb20">
+          <ul>
+            <li><h3>Podrás crear categorias para tus examenes.</h3></li>
+            <li><h3>Podrás crear los exámenes a tu gusto y con el tiempo establecido que tu decidas.</h3></li>
+            <li><h3>Las preguntas tienen una manera facíl de  generarse.</h3></li>
+            <li><h3>Totalmente gratis.</h3></li>
+            <li><h3>Los cuestionarios no tienen cantidad de intentos, asi que es perfecta para practicar.</h3></li>
+            <li><h3>En esta plataforma aprenderás sin dolor de cabeza.</h3></li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions class="flex-center mt20">
+          <button routerLink="/signup" mat-flat-button color="primary">Iniciar</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </div>

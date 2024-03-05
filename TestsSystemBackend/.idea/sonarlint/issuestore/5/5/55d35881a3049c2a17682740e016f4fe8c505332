@@ -1,0 +1,27 @@
+
+E
+java:S3740:"/Provide the parametrized type for this generic.(®‰íù
+E
+java:S3740C"/Provide the parametrized type for this generic.(Õ¿ÿä
+c
+java:S1192)"HDefine a constant instead of duplicating this literal "Message" 3 times.(õÂª”üÿÿÿÿ
+R
+java:S4973F"<Strings and Boxed types should be compared using "equals()".(œ‰Ýµ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+A
+java:S1452!"&Remove usage of generic wildcard type.(š»ÝÅûÿÿÿÿ
+\
+java:S1075+"ARefactor your code to get this URI from a customizable parameter.(Ðì¢õúÿÿÿÿ
+A
+java:S14521"&Remove usage of generic wildcard type.(‡ñÎ úÿÿÿÿ
+A
+java:S1452V"&Remove usage of generic wildcard type.(±­—Ûøÿÿÿÿ
+p
+java:S1128"URemove this unused import 'com.tests.system.security.filter.JwtAuthenticationFilter'.(£Ãˆðýÿÿÿÿ
+g
+java:S1128"LRemove this unused import 'com.tests.system.service.UserDetailsServiceImpl'.(ÉŠœÉûÿÿÿÿ

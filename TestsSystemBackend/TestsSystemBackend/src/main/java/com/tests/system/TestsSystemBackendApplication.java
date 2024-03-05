@@ -1,5 +1,6 @@
 package com.tests.system;
 
+import com.tests.system.entities.ERole;
 import com.tests.system.entities.RoleEntity;
 import com.tests.system.service.UserServiceImpl;
 import com.tests.system.service.dto.UserDTO;
@@ -21,8 +22,9 @@ public class TestsSystemBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*Set<String> roles = Set.of("ADMIN","INVITED");
-		UserDTO user = new UserDTO("leomaster","1234","andre","saavedra","lulesaasoer@gmail.com","312446346",true,"leonard",roles);
+		/*RoleEntity role = new RoleEntity(Long.parseLong("1"), ERole.ADMIN);
+		Set<RoleEntity> roles = Set.of(role);
+		UserDTO user = new UserDTO(Long.parseLong("1"),"leomaster","1234","andre","saavedra","lulesaasoer@gmail.com","312446346",true,"leonard",roles);
 		service.save(user);
 		System.out.println("Usuario guardado");*/
 	}

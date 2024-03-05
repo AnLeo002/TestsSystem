@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
         verticalPosition:"top"
       });
     }else if(this.loginData.password.trim() == "" || this.loginData.password == null){
-      this.snack.open("La contraseña es requerido","Aceptar",{
+      this.snack.open("La contraseña es requerida","Aceptar",{
         duration:3000,
         verticalPosition:"top"
       });
@@ -37,13 +37,10 @@ export class LoginComponent implements OnInit{
 
     this.loginService.login(this.loginData).subscribe(
       (data:any)=>{
-        console.log(data.Token);
-
-        this.loginService.resposeToken(data.Token);
+        this.loginService.resposeToken(data.token);
         
         this.loginService.getCurrentUser().subscribe((user:any)=>{
           this.loginService.setUser(user);
-          console.log(user);
 
           if(this.loginService.getUserRole() == "ADMIN" || this.loginService.getUserRole() == "INVITED"){
             //dashboard admin

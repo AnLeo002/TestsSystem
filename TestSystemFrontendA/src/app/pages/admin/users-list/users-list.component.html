@@ -1,0 +1,40 @@
+<mat-card class="p20">
+  <h1 class="text-center"> Perfiles</h1>
+  <mat-card-content>
+      <div class="container">
+        <div class="text-center mt20">
+          <button mat-flat-button color="primary" routerLink="/admin/add-user">Crear usuario</button>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table text-center w100">
+              <tr>
+                <td>Usuario</td>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Estado</td>
+                <td>Rol</td>
+                <td>Teléfono</td>
+                <td>Correo electronico</td>
+                <td></td>
+              </tr>
+                <tr *ngFor="let u of userList" >
+                  <td>{{u.username}}</td>
+                  <td>{{u.id}}</td>
+                  <td>{{u.name}}</td>
+                  <td>{{u.lastName}}</td>
+                  <td>{{u.enabled ? "Activo" : "Inactivo"}}</td>
+                  <td>{{u.roles[0].role}}</td>
+                  <td>{{u.phone}}</td>
+                  <td>{{u.email}}</td>
+                  <td>
+                    <button mat-raised-button color="primary" class="mr20" (click)="changeEnabled(u)">Estado</button>
+                    <button mat-raised-button color="warn" (click)="deleteProfile(u.id)" >Eliminar</button></td>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+  </mat-card-content>
+</mat-card>

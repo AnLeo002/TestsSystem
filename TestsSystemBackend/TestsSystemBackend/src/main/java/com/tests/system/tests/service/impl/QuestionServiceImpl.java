@@ -7,7 +7,9 @@ import com.tests.system.tests.service.dto.QuestionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,12 +49,22 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> findAllUnansweredQuestions(Long id) {
-        List<Question> questionList = repo.findByExam(id).stream()
-                .map(q -> new Question(q.getId(),q.getContent(), q.getImg(), q.getOption1(), q.getOption2(), q.getOption3(), q.getOption4(),q.getResponse(),q.getAnswerUser(),q.getExam()))
-                .collect(Collectors.toList());
+    public Map<String, Object> evaluateAnswer(List<Question> questions) {
+        Integer pointsEarned = 0;
+        Integer answersCorrect = 0;
+        Integer attempts = 0;
+        for (Question q : questions){
+            if(q.getResponse().equalsIgnoreCase(q.getAnswerUser())){
+                answersCorrect ++;
+                pointsEarned = (Integer.parseInt(q.getExam().getPoints()) / questions.size()) * answersCorrect;
+            }
+        }
+        Map<String, Object> response = new HashMap<>();
+        response.put("pointsEarned",pointsEarned);
+        response.put("answersCorrect",answersCorrect);
+        response.put("attempts",attempts ++);
 
-        return questionList;
+        return response;
     }
 
     @Override

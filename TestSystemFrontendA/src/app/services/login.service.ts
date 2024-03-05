@@ -71,4 +71,5 @@ export class LoginService {
   public getCurrentUser(){
     return this.httpClient.get(`${baseUrl}/v1/sessionUser`)
   }
+  
 }

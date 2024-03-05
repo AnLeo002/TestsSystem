@@ -20,6 +20,9 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
 import { LoadExamComponent } from './pages/user/load-exam/load-exam.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
+import { UpdateInfoComponent } from './pages/update-info/update-info.component';
+import { UsersListComponent } from './pages/admin/users-list/users-list.component';
+import { AddUserComponent } from './pages/admin/add-user/add-user.component';
 
 const routes: Routes = [
   {//Cuando se entre a cualquier ruta vacia se va a diriguir a este componente
@@ -42,6 +45,9 @@ const routes: Routes = [
       {
         path:'profile',
         component:ProfileComponent
+      },{
+        path:'update-profile',
+        component:UpdateInfoComponent
       },{
         path:'',
         component:WelcomeComponent
@@ -69,6 +75,12 @@ const routes: Routes = [
       },{
         path:'update-question/:questionId',
         component: UpdateQuestionComponent
+      },{
+        path:'user-list',
+        component:UsersListComponent
+      },{
+        path:'add-user',
+        component:AddUserComponent
       }
     ]
   },{
@@ -77,6 +89,12 @@ const routes: Routes = [
     canActivate:[UserGuard],
     children:[
       {
+        path:'profile',
+        component:ProfileComponent
+      },{
+        path:'update-profile',
+        component:UpdateInfoComponent
+      },{
         path:':catId',
         component:LoadExamComponent
       },{

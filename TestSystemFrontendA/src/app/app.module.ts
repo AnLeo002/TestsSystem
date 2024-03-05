@@ -44,6 +44,9 @@ import { LoadExamComponent } from './pages/user/load-exam/load-exam.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { UpdateInfoComponent } from './pages/update-info/update-info.component';
+import { UsersListComponent } from './pages/admin/users-list/users-list.component';
+import { AddUserComponent } from './pages/admin/add-user/add-user.component';
 
 
 @NgModule({
@@ -69,7 +72,10 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     UserSidebar,
     LoadExamComponent,
     InstructionsComponent,
-    StartComponent
+    StartComponent,
+    UpdateInfoComponent,
+    UsersListComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExamService } from '../../../services/exam.service';
+import { QuestionService } from '../../../services/question.service';
 
 @Component({
   selector: 'app-load-exam',
@@ -11,8 +12,9 @@ export class LoadExamComponent implements OnInit {
 
   categoryId:any;
   exams:any;
+  numberOfQuesitons:any;
 
-  constructor(private route:ActivatedRoute, private examService:ExamService){}
+  constructor(private route:ActivatedRoute, private examService:ExamService,private questionService: QuestionService){}
   ngOnInit(): void {
     this.categoryId = this.route.params.subscribe((param)=>{
       this.categoryId = param['catId'];
@@ -21,7 +23,6 @@ export class LoadExamComponent implements OnInit {
         this.examService.findAllExamsIfEnabled().subscribe(
           (data)=>{
             this.exams = data;
-            console.log(this.exams)
           },(e)=>{
             console.log(e);
           }
@@ -40,5 +41,4 @@ export class LoadExamComponent implements OnInit {
     })
     
   }
-
 }

@@ -1,0 +1,67 @@
+<div class="bootstrap-wrapper">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card class="p20" *ngIf="user">
+        <h2 class="text-center">Actualizar información de <b>{{user.username}}</b></h2>
+        <mat-card-content>
+          <form class="mt20" (ngSubmit)="formSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w100">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input [(ngModel)]="user.username" type="text" name="username" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w100">
+                  <mat-label>Nombre</mat-label>
+                  <input [(ngModel)]="user.name" type="text" name="name" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w100">
+                  <mat-label>Apellido</mat-label>
+                  <input [(ngModel)]="user.lastName" type="text" name="lastName" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w100">
+                  <mat-label>Telefono</mat-label>
+                  <input [(ngModel)]="user.phone" type="text" name="phone" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w100">
+                  <mat-label>Email</mat-label>
+                  <input [(ngModel)]="user.email" type="text" name="email" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6" *ngIf="user.roles[0].role != 'USER'">
+                <mat-form-field class="w100">
+                  <mat-label>Rol</mat-label>
+                  <input [(ngModel)]="user.roles[0].role" type="text" name="roles" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w100">
+                  <mat-label>Contraseña</mat-label>
+                  <input [(ngModel)]="user.password" type="password" name="pasword" matInput required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w100" *ngIf="user.roles[0].role != 'USER'">
+                  <mat-label>Activo</mat-label>
+                  <input [(ngModel)]="user.enabled" type="text" name="enabled" matInput required>
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div class="container text-center">
+              <button mat-raised-button color="primary">Guardar</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import com.tests.system.security.filter.JwtAuthenticationFilter;
 import com.tests.system.security.filter.JwtAuthorizationFilter;
 import com.tests.system.security.jwt.JwtUtils;
 import com.tests.system.service.UserDetailsServiceImpl;
+import com.tests.system.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +39,7 @@ public class SecurityConfig{
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager) throws Exception {
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(jwtUtils);
         jwtAuthenticationFilter.setAuthenticationManager(authenticationManager);
-        //jwtAuthenticationFilter.setFilterProcessesUrl("/login");
+        jwtAuthenticationFilter.setFilterProcessesUrl("/login");
         httpSecurity
                 .cors(cors ->cors.configurationSource(corsConfigurationSource())).csrf(csrf->csrf.disable())
                 .authorizeHttpRequests( auth ->{

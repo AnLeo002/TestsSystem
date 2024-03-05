@@ -40,9 +40,9 @@ public class QuestionController {
     public ResponseEntity<?> findAllQuestionsByExam(@PathVariable("id")Long id){
         return ResponseEntity.ok().body(questionService.findAllQuestionsByExam(id));
     }
-    @GetMapping("/findAllUnanswered/{id}")
-    public ResponseEntity<List<Question>> findAllUnansweredQuestions(@PathVariable Long id){
-        return ResponseEntity.ok(questionService.findAllUnansweredQuestions(id));
+    @PostMapping("/evaluateAnswer")
+    public ResponseEntity<?> evaluateAnswers(@RequestBody List<Question> questions){
+        return ResponseEntity.ok(questionService.evaluateAnswer(questions));
     }
 
     @PutMapping("/update/{id}")

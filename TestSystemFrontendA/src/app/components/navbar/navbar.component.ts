@@ -8,19 +8,24 @@ import { LoginService } from '../../services/login.service';
 })
 export class NavbarComponent implements OnInit{
 
-  username:any;
-
+  role:any;
+  user:any = null;
+  
   constructor(public login:LoginService){}
 
-  user:any = null;
+  
 
   ngOnInit(): void {
-    this.user = this.login.getUser();
-    this.login.loginStatusSubjec.asObservable().subscribe(
-      data => {
-        this.user = this.login.getUser();
-      }
-    )
+    if (this.login.isLoggedIn()) {
+      this.user = this.login.getUser();        
+          if(this.user.roles[0].role == "USER"){
+            this.role = "user"
+          }else{
+            this.role = "admin";
+          }
+      
+    }
+    
 
   }
 

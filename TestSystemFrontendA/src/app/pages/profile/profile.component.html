@@ -38,8 +38,8 @@
       </div>
     </div>
     <mat-card-actions class="center">
-      <button mat-raised-button color="primary" class="mr20">Actualizar</button>
-      <button mat-raised-button color="primary">Compartir</button>
+      <button mat-raised-button color="primary" class="mr20" routerLink="/{{role}}/update-profile">Actualizar</button>
+      <button mat-raised-button color="warn" (click)="deleteProfile()">Eliminar perfil</button>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>

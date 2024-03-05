@@ -17,10 +17,9 @@
           <mat-card-content class="text-center">
             <p>{{e.description}}</p>
           </mat-card-content>
-          <mat-card-actions class="flex-center p20">
-            <button mat-flat-button color="primary">Ver</button>
+          <mat-card-actions class="flex-center p20" >
             <button mat-flat-button color="accent" class="ml20" [routerLink]="'/user/instructions/'+e.id">Empezar</button>
-            <button mat-flat-button color="accent" class="ml20">Preguntas: {{exams}}</button>
+            <button mat-flat-button color="accent" class="ml20">Preguntas: {{e.numberOfQuestions}}</button>
             <button mat-flat-button color="accent" class="ml20">Puntos: {{e.points}}</button>
           </mat-card-actions>
         </mat-card>

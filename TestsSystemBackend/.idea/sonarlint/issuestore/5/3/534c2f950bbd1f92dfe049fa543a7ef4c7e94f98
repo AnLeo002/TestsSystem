@@ -1,7 +1,0 @@
-
-†
-java:S14883"dImmediately return this expression instead of assigning it to the temporary variable "questionList".(ıÓ¯ûÿÿÿÿ8Š¸™áÜ1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8É¸™áÜ1
-o
-java:S62045"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8á¸™áÜ1

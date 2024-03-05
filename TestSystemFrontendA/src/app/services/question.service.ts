@@ -24,7 +24,7 @@ export class QuestionService {
   public findQuestion(id:any){
     return this.http.get(`${baseUrl}/question/find/${id}`);
   }
-  public findAllUnansweredQuestions(examId:any){
-    return this.http.get(`${baseUrl}/question/findAllUnanswered/${examId}`);
+  public evaluateAnswers(questions:any){
+    return this.http.post(`${baseUrl}/question/evaluateAnswer`,questions);
   }
 }

@@ -4,6 +4,7 @@ import com.tests.system.tests.entities.Question;
 import com.tests.system.tests.service.dto.QuestionDTO;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface QuestionService {
@@ -11,7 +12,7 @@ public interface QuestionService {
     Question findQuestionById(Long id);
     List<Question> findAllQuestions();
     List<Question> findAllQuestionsByExam(Long id);
-    List<Question> findAllUnansweredQuestions(Long id);
+    Map<String,Object> evaluateAnswer(List<Question> questions);
     void deleteQuestion(Long id);
     Question updateQuestion(QuestionDTO questionDTO, Long id);
 }

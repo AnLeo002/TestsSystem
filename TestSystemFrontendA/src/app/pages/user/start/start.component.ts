@@ -14,9 +14,7 @@ export class StartComponent implements OnInit {
   examId: any;
   questions: any;
 
-  pointsEarned = 0;
-  answersCorrect = 0;
-  attempts = 0;
+  response:any;
 
   sendQuestions = false;
   time: any;
@@ -70,7 +68,16 @@ export class StartComponent implements OnInit {
   }
 
   public evaluateExam(){
-    this.questions.forEach((q: any) => {
+    this.questionService.evaluateAnswers(this.questions).subscribe(
+      (data)=>{
+        console.log(data);
+        this.response = data
+      },(error)=>{
+        console.error(error);
+      }
+    )
+    this.sendQuestions = true;
+    /* this.questions.forEach((q: any) => {
       if (q.answerUser == q.response) {
         this.answersCorrect ++;
         this.pointsEarned =
@@ -79,7 +86,7 @@ export class StartComponent implements OnInit {
       }
       this.sendQuestions = true;
     });
-    this.attempts++;
+    this.attempts++; */
   }
   public sendExam() {
     Swal.fire({
@@ -93,22 +100,21 @@ export class StartComponent implements OnInit {
       icon: 'question',
     }).then((result) => {
       if (result.isConfirmed) {
+        let completeAll = true;
         this.questions.forEach((q: any) => {
           if (q.answerUser == null) {
             this.snack.open('Complete todas las preguntas', '', {
               duration: 3000,
               verticalPosition: 'top',
             });
+            completeAll = false; 
             return;
-          } else if (q.answerUser == q.response) {
-            this.answersCorrect++;
-            this.pointsEarned =
-              (this.questions[0].exam.points / this.questions.length) *
-              this.answersCorrect;
-          }
-          this.sendQuestions = true;
+          } 
         });
-        this.attempts++;
+        if(completeAll){
+          this.evaluateExam();
+        }
+        
         /* alert("Puntos conseguidos: " + this.pointsEarned)
         alert("Respuestas correctas: " + this.answersCorrect)
         alert("Cantidad de intentos: " + this.attempts) */
